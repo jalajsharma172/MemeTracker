@@ -1,36 +1,56 @@
 import React, { useState } from 'react';
-import './style-com.css';
+import './style.css';
 const faqData = [
   {
-    question: "What is Memecoin?",
-    answer: "Memecoin is a cryptocurrency that is inspired by internet memes and trends."
+    question: "What is MemeTracker?",
+    answer: "MemeTracker is a platform that tracks and analyzes trending memes on Twitter (X) in real-time."
   },
   {
-    question: "How can I buy Memecoin?",
-    answer: "You can buy Memecoin on various cryptocurrency exchanges that support it."
+    question: "How does MemeTracker work?",
+    answer: "MemeTracker uses AI and data analytics to monitor popular tweets, hashtags, and engagement metrics to identify viral memes."
   },
   {
-    question: "Is Memecoin a good investment?",
-    answer: "As with any investment, it's important to do your own research and understand the risks involved."
+    question: "Is MemeTracker free to use?",
+    answer: "Yes! MemeTracker offers free access to trending memes, but premium features may be available for advanced analytics."
   },
   {
-    question: "How do I store Memecoin?",
-    answer: "You can store Memecoin in a cryptocurrency wallet that supports it."
+    question: "Can I search for specific memes?",
+    answer: "Absolutely! You can search by keywords, hashtags, or specific Twitter accounts to find memes relevant to your interests."
   },
   {
-    question: "What are the benefits of using Memecoin?",
-    answer: "Memecoin offers fast transactions, low fees, and a fun community."
+    question: "How often is meme data updated?",
+    answer: "Our system updates meme trends in real-time, ensuring you always have the latest viral content."
+  },
+  {
+    question: "Does MemeTracker support multiple languages?",
+    answer: "Yes! We track memes in various languages to provide global meme trends."
+  },
+  {
+    question: "How can I submit a meme to be tracked?",
+    answer: "If you find an interesting meme, you can tag us on Twitter ."
+  },
+  {
+    question: "Does MemeTracker provide meme engagement statistics?",
+    answer: "Yes! We provide insights like likes, retweets, comments, and overall reach of trending memes."
+  },
+  {
+    question: "How can I contact support?",
+    answer: "You can reach out to our support team via email or social media for any inquiries."
   }
 ];
 
+
 const Questions = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+
+
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
+    <div className="section-container">
     <div className="faq-container">
       <h1>Frequently Asked Questions</h1>
       {faqData.map((item, index) => (
@@ -42,6 +62,8 @@ const Questions = () => {
         </div>
       ))}
     </div>
+    </div>
+
   );
 };
 

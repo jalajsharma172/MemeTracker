@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useCallback ,useEffect} from 'react';
 import { Link,useNavigate } from 'react-router-dom';
-import './style-com.css'; // Optional: For styling
-
+import './style.css'; // Optional: For styling
+// import user from '../public/user.png';
 
 const Navbar = () => {
 
@@ -14,9 +14,8 @@ const Navbar = () => {
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
   }, []);
-
   const navigateTo = useNavigate();
-  const [selectedAccount, setSelectedAccount] = useState(null);
+  const [selectedAccount, setSelectedAccount] = useState("");
   const handleWallet = async () => {
     try {
       // Check if MetaMask is installed
@@ -52,6 +51,11 @@ const Navbar = () => {
           <span className="navbar-title">Jainwin Website</span>
         </Link>
       </div>
+      
+    
+
+
+
 
       {/* Right Side: Dashboard, Status, Connect Wallet Buttons */}
       <div className="navbar-right">
@@ -62,7 +66,9 @@ const Navbar = () => {
           Status
         </Link>
         <button className="navbar-button" onClick={openModal} >
-          {selectedAccount ? selectedAccount : "Connect Wallet"}
+          {selectedAccount ?( <>
+              <img src="./user.png" alt=""  />
+          {selectedAccount.slice(0, 8)} </>) : "Connect Wallet"}
         </button>
 
         {/* Portal */}

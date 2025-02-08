@@ -1,56 +1,103 @@
 import React, { useState } from 'react';
-import './style.css'
+import './style.css';
 import Navbar from '../components/Navbar';
-import Questions from '../components/Questions'
+import Questions from '../components/Questions';
 import MemeFeed from '../components/MemeFeed';
-
-
-const data = [
-  { token: "MOVES", priceUSD: "0.0000064841", priceSOL: "0.000000281", age: "1mo ago", views: "14295", mentions: "2", mcap: "6.48K" },
-  { token: "MY", priceUSD: "0.0000086637", priceSOL: "0.000000372", age: "1mo ago", views: "96951", mentions: "1", mcap: "8.66K" },
-  { token: "X", priceUSD: "0.0000063711", priceSOL: "0.000000302", age: "1mo ago", views: "26400", mentions: "1", mcap: "6.37K" },
-  { token: "GEM", priceUSD: "0.0000054463", priceSOL: "0.000000292", age: "1mo ago", views: "47480", mentions: "4", mcap: "5.45K" },
-  { token: "VIBE", priceUSD: "0.0000069585", priceSOL: "0.000000302", age: "1mo ago", views: "34600", mentions: "1", mcap: "6.99K" },
-  { token: "SPEED", priceUSD: "0.0000072068", priceSOL: "0.000000309", age: "1mo ago", views: "34600", mentions: "1", mcap: "7.21K" },
-  { token: "TRUST", priceUSD: "0.0000081846", priceSOL: "0.000000360", age: "1mo ago", views: "18222", mentions: "4", mcap: "8.18K" },
-  // Add more items to make the array larger
-  { token: "TOKEN8", priceUSD: "0.0000090000", priceSOL: "0.000000400", age: "2mo ago", views: "12345", mentions: "3", mcap: "9.00K" },
-  { token: "TOKEN9", priceUSD: "0.0000100000", priceSOL: "0.000000450", age: "3mo ago", views: "54321", mentions: "5", mcap: "10.00K" },
-  { token: "TOKEN10", priceUSD: "0.0000110000", priceSOL: "0.000000500", age: "4mo ago", views: "67890", mentions: "6", mcap: "11.00K" },
-  { token: "TOKEN11", priceUSD: "0.0000120000", priceSOL: "0.000000550", age: "5mo ago", views: "98765", mentions: "7", mcap: "12.00K" },
-  { token: "TOKEN12", priceUSD: "0.0000130000", priceSOL: "0.000000600", age: "6mo ago", views: "11223", mentions: "8", mcap: "13.00K" },
-  { token: "TOKEN13", priceUSD: "0.0000140000", priceSOL: "0.000000650", age: "7mo ago", views: "44556", mentions: "9", mcap: "14.00K" },
-  { token: "TOKEN14", priceUSD: "0.0000150000", priceSOL: "0.000000700", age: "8mo ago", views: "77889", mentions: "10", mcap: "15.00K" },
-  { token: "TOKEN15", priceUSD: "0.0000160000", priceSOL: "0.000000750", age: "9mo ago", views: "99100", mentions: "11", mcap: "16.00K" },
-  { token: "TOKEN8", priceUSD: "0.0000090000", priceSOL: "0.000000400", age: "2mo ago", views: "12345", mentions: "3", mcap: "9.00K" },
-  { token: "TOKEN9", priceUSD: "0.0000100000", priceSOL: "0.000000450", age: "3mo ago", views: "54321", mentions: "5", mcap: "10.00K" },
-  { token: "TOKEN10", priceUSD: "0.0000110000", priceSOL: "0.000000500", age: "4mo ago", views: "67890", mentions: "6", mcap: "11.00K" },
-  { token: "TOKEN11", priceUSD: "0.0000120000", priceSOL: "0.000000550", age: "5mo ago", views: "98765", mentions: "7", mcap: "12.00K" },
-  { token: "TOKEN12", priceUSD: "0.0000130000", priceSOL: "0.000000600", age: "6mo ago", views: "11223", mentions: "8", mcap: "13.00K" },
-  { token: "TOKEN13", priceUSD: "0.0000140000", priceSOL: "0.000000650", age: "7mo ago", views: "44556", mentions: "9", mcap: "14.00K" },
-  { token: "TOKEN14", priceUSD: "0.0000150000", priceSOL: "0.000000700", age: "8mo ago", views: "77889", mentions: "10", mcap: "15.00K" },
-  { token: "TOKEN15", priceUSD: "0.0000160000", priceSOL: "0.000000750", age: "9mo ago", views: "99100", mentions: "11", mcap: "16.00K" }, { token: "TOKEN8", priceUSD: "0.0000090000", priceSOL: "0.000000400", age: "2mo ago", views: "12345", mentions: "3", mcap: "9.00K" },
-  { token: "TOKEN9", priceUSD: "0.0000100000", priceSOL: "0.000000450", age: "3mo ago", views: "54321", mentions: "5", mcap: "10.00K" },
-  { token: "TOKEN10", priceUSD: "0.0000110000", priceSOL: "0.000000500", age: "4mo ago", views: "67890", mentions: "6", mcap: "11.00K" },
-  { token: "TOKEN11", priceUSD: "0.0000120000", priceSOL: "0.000000550", age: "5mo ago", views: "98765", mentions: "7", mcap: "12.00K" },
-  { token: "TOKEN12", priceUSD: "0.0000130000", priceSOL: "0.000000600", age: "6mo ago", views: "11223", mentions: "8", mcap: "13.00K" },
-  { token: "TOKEN13", priceUSD: "0.0000140000", priceSOL: "0.000000650", age: "7mo ago", views: "44556", mentions: "9", mcap: "14.00K" },
-  { token: "TOKEN14", priceUSD: "0.0000150000", priceSOL: "0.000000700", age: "8mo ago", views: "77889", mentions: "10", mcap: "15.00K" },
-  { token: "TOKEN15", priceUSD: "0.0000160000", priceSOL: "0.000000750", age: "9mo ago", views: "99100", mentions: "11", mcap: "16.00K" },
-];
-
-
-
+import MemeSubmit from '../components/SubmitMemeSection';
+import ContactForm from '../components/ContactForm'
 const Home = () => {
+
+  const latestMemeCoins = [
+    { name: "PepeCoin", symbol: "PEPE", launchDate: "2023-05-01", initialPrice: "$0.000001" },
+    { name: "DogeBonk", symbol: "DOBO", launchDate: "2023-05-15", initialPrice: "$0.000005" },
+    { name: "CatGirl", symbol: "CATGIRL", launchDate: "2023-05-20", initialPrice: "$0.000001" },
+    { name: "ElonDoge", symbol: "EDOGE", launchDate: "2023-06-01", initialPrice: "$0.00001" },
+    { name: "MoonShot", symbol: "MOON", launchDate: "2023-06-10", initialPrice: "$0.00005" },
+    { name: "PepeCoin", symbol: "PEPE", launchDate: "2023-05-01", initialPrice: "$0.000001" },
+    { name: "DogeBonk", symbol: "DOBO", launchDate: "2023-05-15", initialPrice: "$0.000005" },
+    { name: "CatGirl", symbol: "CATGIRL", launchDate: "2023-05-20", initialPrice: "$0.000001" },
+    { name: "ElonDoge", symbol: "EDOGE", launchDate: "2023-06-01", initialPrice: "$0.00001" },
+    { name: "DogeBonk", symbol: "DOBO", launchDate: "2023-05-15", initialPrice: "$0.000005" },
+    { name: "CatGirl", symbol: "CATGIRL", launchDate: "2023-05-20", initialPrice: "$0.000001" },
+    { name: "ElonDoge", symbol: "EDOGE", launchDate: "2023-06-01", initialPrice: "$0.00001" },
+    { name: "MoonShot", symbol: "MOON", launchDate: "2023-06-10", initialPrice: "$0.00005" },
+    { name: "PepeCoin", symbol: "PEPE", launchDate: "2023-05-01", initialPrice: "$0.000001" },
+    { name: "DogeBonk", symbol: "DOBO", launchDate: "2023-05-15", initialPrice: "$0.000005" },
+    { name: "CatGirl", symbol: "CATGIRL", launchDate: "2023-05-20", initialPrice: "$0.000001" },
+    { name: "ElonDoge", symbol: "EDOGE", launchDate: "2023-06-01", initialPrice: "$0.00001" },
+    { name: "PepeCoin", symbol: "PEPE", launchDate: "2023-05-01", initialPrice: "$0.000001" },
+    { name: "DogeBonk", symbol: "DOBO", launchDate: "2023-05-15", initialPrice: "$0.000005" },
+    { name: "CatGirl", symbol: "CATGIRL", launchDate: "2023-05-20", initialPrice: "$0.000001" },
+    { name: "ElonDoge", symbol: "EDOGE", launchDate: "2023-06-01", initialPrice: "$0.00001" },
+    { name: "MoonShot", symbol: "MOON", launchDate: "2023-06-10", initialPrice: "$0.00005" },
+    { name: "PepeCoin", symbol: "PEPE", launchDate: "2023-05-01", initialPrice: "$0.000001" },
+    { name: "CatGirl", symbol: "CATGIRL", launchDate: "2023-05-20", initialPrice: "$0.000001" },
+    { name: "ElonDoge", symbol: "EDOGE", launchDate: "2023-06-01", initialPrice: "$0.00001" },
+    { name: "MoonShot", symbol: "MOON", launchDate: "2023-06-10", initialPrice: "$0.00005" },
+    { name: "MoonShot", symbol: "MOON", launchDate: "2023-06-10", initialPrice: "$0.00005" },
+    { name: "PepeCoin", symbol: "PEPE", launchDate: "2023-05-01", initialPrice: "$0.000001" },
+    { name: "DogeBonk", symbol: "DOBO", launchDate: "2023-05-15", initialPrice: "$0.000005" },
+    { name: "CatGirl", symbol: "CATGIRL", launchDate: "2023-05-20", initialPrice: "$0.000001" },
+    { name: "ElonDoge", symbol: "EDOGE", launchDate: "2023-06-01", initialPrice: "$0.00001" },
+    { name: "MoonShot", symbol: "MOON", launchDate: "2023-06-10", initialPrice: "$0.00005" },
+    { name: "PepeCoin", symbol: "PEPE", launchDate: "2023-05-01", initialPrice: "$0.000001" },
+    { name: "DogeBonk", symbol: "DOBO", launchDate: "2023-05-15", initialPrice: "$0.000005" },
+    { name: "CatGirl", symbol: "CATGIRL", launchDate: "2023-05-20", initialPrice: "$0.000001" },
+    { name: "ElonDoge", symbol: "EDOGE", launchDate: "2023-06-01", initialPrice: "$0.00001" },
+    { name: "MoonShot", symbol: "MOON", launchDate: "2023-06-10", initialPrice: "$0.00005" },
+    { name: "PepeCoin", symbol: "PEPE", launchDate: "2023-05-01", initialPrice: "$0.000001" },
+    { name: "DogeBonk", symbol: "DOBO", launchDate: "2023-05-15", initialPrice: "$0.000005" },
+    { name: "CatGirl", symbol: "CATGIRL", launchDate: "2023-05-20", initialPrice: "$0.000001" },
+    { name: "ElonDoge", symbol: "EDOGE", launchDate: "2023-06-01", initialPrice: "$0.00001" },
+    { name: "MoonShot", symbol: "MOON", launchDate: "2023-06-10", initialPrice: "$0.00005" },
+    { name: "CatGirl", symbol: "CATGIRL", launchDate: "2023-05-20", initialPrice: "$0.000001" },
+    { name: "ElonDoge", symbol: "EDOGE", launchDate: "2023-06-01", initialPrice: "$0.00001" },
+    { name: "MoonShot", symbol: "MOON", launchDate: "2023-06-10", initialPrice: "$0.00005" }
+  ];
+
+  const ogMemeCoins = [
+    { name: "Dogecoin", symbol: "DOGE", launchDate: "2013-12-06", initialPrice: "$0.00026" },
+    { name: "Shiba Inu", symbol: "SHIB", launchDate: "2020-08-01", initialPrice: "$0.000000000056" },
+    { name: "SafeMoon", symbol: "SAFEMOON", launchDate: "2021-03-08", initialPrice: "$0.000000001" },
+    { name: "Floki", symbol: "FLOKI", launchDate: "2021-07-01", initialPrice: "$0.000004" },
+    { name: "Akita Inu", symbol: "AKITA", launchDate: "2021-02-01", initialPrice: "$0.0000001" },
+    { name: "Dogecoin", symbol: "DOGE", launchDate: "2013-12-06", initialPrice: "$0.00026" },
+    { name: "Shiba Inu", symbol: "SHIB", launchDate: "2020-08-01", initialPrice: "$0.000000000056" },
+    { name: "SafeMoon", symbol: "SAFEMOON", launchDate: "2021-03-08", initialPrice: "$0.000000001" },
+    { name: "Floki", symbol: "FLOKI", launchDate: "2021-07-01", initialPrice: "$0.000004" },
+    { name: "Akita Inu", symbol: "AKITA", launchDate: "2021-02-01", initialPrice: "$0.0000001" },
+    { name: "Dogecoin", symbol: "DOGE", launchDate: "2013-12-06", initialPrice: "$0.00026" },
+    { name: "Shiba Inu", symbol: "SHIB", launchDate: "2020-08-01", initialPrice: "$0.000000000056" },
+    { name: "SafeMoon", symbol: "SAFEMOON", launchDate: "2021-03-08", initialPrice: "$0.000000001" },
+    { name: "SafeMoon", symbol: "SAFEMOON", launchDate: "2021-03-08", initialPrice: "$0.000000001" },
+    { name: "Floki", symbol: "FLOKI", launchDate: "2021-07-01", initialPrice: "$0.000004" },
+    { name: "Akita Inu", symbol: "AKITA", launchDate: "2021-02-01", initialPrice: "$0.0000001" },
+    { name: "Dogecoin", symbol: "DOGE", launchDate: "2013-12-06", initialPrice: "$0.00026" },
+    { name: "Shiba Inu", symbol: "SHIB", launchDate: "2020-08-01", initialPrice: "$0.000000000056" },
+    { name: "SafeMoon", symbol: "SAFEMOON", launchDate: "2021-03-08", initialPrice: "$0.000000001" },
+    { name: "SafeMoon", symbol: "SAFEMOON", launchDate: "2021-03-08", initialPrice: "$0.000000001" },
+    { name: "Floki", symbol: "FLOKI", launchDate: "2021-07-01", initialPrice: "$0.000004" },
+    { name: "Akita Inu", symbol: "AKITA", launchDate: "2021-02-01", initialPrice: "$0.0000001" },
+    { name: "Dogecoin", symbol: "DOGE", launchDate: "2013-12-06", initialPrice: "$0.00026" },
+    { name: "Shiba Inu", symbol: "SHIB", launchDate: "2020-08-01", initialPrice: "$0.000000000056" },
+    { name: "SafeMoon", symbol: "SAFEMOON", launchDate: "2021-03-08", initialPrice: "$0.000000001" },
+  ];
+
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage2, setCurrentPage2] = useState(1);
   const itemsPerPage = 10;
-
   const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfLastItem2 = currentPage2 * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const indexOfFirstItem2 = indexOfLastItem2 - itemsPerPage;
+  const currentItems1 = latestMemeCoins.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems2 = ogMemeCoins.slice(indexOfFirstItem2, indexOfLastItem2);
 
+  const [activeTab, setActiveTab] = useState("latest");
+
+  const coins = activeTab === "latest" ? currentItems1 : currentItems2;
   const nextPage = () => {
-    if (currentPage < Math.ceil(data.length / itemsPerPage)) {
+    if (currentPage < Math.ceil(latestMemeCoins.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -60,59 +107,94 @@ const Home = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+  const nextPage2 = () => {
+    if (currentPage2 < Math.ceil(ogMemeCoins.length / itemsPerPage)) {
+      setCurrentPage2(currentPage2 + 1);
+    }
+  };
+
+  const prevPage2 = () => {
+    if (currentPage2 > 1) {
+      setCurrentPage2(currentPage2 - 1);
+    }
+  };
 
   return (
     <>
       <Navbar />
       <div className='heading'>
-        <h2>See What’s Trending – Real-Time Meme Insights from Twitter!</h2>
+        <h2>See What’s Trending – Real-Time Meme Insights from Reddit!</h2>
         <div className="subheading">
           <h4>Join the Meme Revolution – Stay Ahead of the Trends!</h4>
         </div>
       </div>
+
       <div className="container">
+        {/* Tab Buttons */}
+        <div className="table">
+          <button
+            className={`table-button ${activeTab === "latest" ? "active" : ""}`}
+            onClick={() => setActiveTab("latest")}  >
+            Latest Meme Coins
+          </button>
+          <button
+            className={`table-button ${activeTab === "og" ? "active" : ""}`}
+            onClick={() => setActiveTab("og")}>
+            OG Meme Coins
+          </button>
+        </div>
+
+        {/* Meme Coin Table */}
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Name </th>
-              <th>Current Price</th>
-              <th>Market Cap</th>
-              <th>Total Volume</th>
-              <th>Views</th>
-              <th>Last_updated</th>
+              <th>Name</th>
               <th>Symbol</th>
+              <th>Launch Date</th>
+              <th>Initial Price</th>
             </tr>
           </thead>
           <tbody>
-            {currentItems.map((item, index) => (
+            {coins.map((coin, index) => (
               <tr key={index}>
-                <td>{indexOfFirstItem + index + 1}</td>
-                <td>{item.token}</td>
-                <td>${item.priceUSD}</td>
-                <td>{item.priceSOL}</td>
-                <td>{item.age}</td>
-                <td>{item.views}</td>
-                <td>{item.mentions}</td>
-                <td>{item.mcap}</td>
+                <td>{coin.name}</td>
+                <td>{coin.symbol}</td>
+                <td>{coin.launchDate}</td>
+                <td>{coin.initialPrice}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <div className="pagination">
-          <button onClick={prevPage} disabled={currentPage === 1}>
-            Prev
-          </button>
-          <button onClick={nextPage} disabled={currentPage === Math.ceil(data.length / itemsPerPage)}>
-            Next
-          </button>
-        </div>
+
+        {/* Pagination Buttons */}
+        {activeTab === "latest" ? (
+          <div className="pagination">
+            <button onClick={prevPage} disabled={currentPage === 1}>
+              Prev
+            </button>
+            <button onClick={nextPage} disabled={currentPage === Math.ceil(latestMemeCoins.length / itemsPerPage)}>
+              Next
+            </button>
+          </div>
+        ) : (
+          <div className="pagination">
+            <button onClick={prevPage2} disabled={currentPage2 === 1}>
+              Prev
+            </button>
+            <button onClick={nextPage2} disabled={currentPage2 === Math.ceil(ogMemeCoins.length / itemsPerPage)}>
+              Next
+            </button>
+          </div>
+        )}
       </div>
+
+      <br />
       <br />
       <MemeFeed />
-      <br />
-     < Questions />
-    </>
+      <MemeSubmit />
+      <Questions />
+      <ContactForm />
+      </>
   );
 };
 
