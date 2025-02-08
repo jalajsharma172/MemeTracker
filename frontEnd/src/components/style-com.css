@@ -1,0 +1,160 @@
+
+/* Connect Walelt Palet */
+.modal{
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0px;
+    right : 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+svg{
+  width: 50px;
+  height: 50px;
+}
+input{
+  width: 96%;
+  height: 35px;
+  margin: 0px;
+  border-radius: 7px;
+}
+.modal-content{
+  background-color: rgba(0, 0, 0);
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 25vw;
+  height: 75vh;
+  padding: 20px;
+  position: relative;
+}
+.close-button{
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  position: relative; /* Moves the child relative to its normal position */
+  left: 90%; /* Moves the child 20px to the right */
+  top: 0px; /* Moves the child 10px down */
+  margin: 5px;
+}
+.modal-options{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 10px;  
+}
+
+.modal-icon{
+  width: 40px;
+  height: 40px;
+}
+.modal-option {
+  background-color: rgb(60, 63, 60);
+  color:white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid black;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-option:hover {
+  background-color: #ffcc00;
+  transform: translateY(-2px);
+}
+
+.modal-option:active {
+  transform: translateY(0);
+}
+
+
+/* Navbar Container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    /* background: linear-gradient(135deg, #6a11cb, #2575fc); */
+    background-color: #121212;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Left Side: Branding */
+  .navbar-left {
+   
+    display: flex;
+    align-items: center;
+  }
+  
+  .home{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 0.5rem;
+  }
+  
+  .navbar-title {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Right Side: Links and Button */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .navbar-link {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .navbar-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffdd57;
+  }
+  
+  .navbar-button {
+    /* text-decoration: none; */
+    background-color: #ffdd57;
+    color: #333;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .navbar-button:hover {
+    background-color: #ffcc00;
+    transform: translateY(-2px);
+  }
+  
+  .navbar-button:active {
+    transform: translateY(0);
+  }
