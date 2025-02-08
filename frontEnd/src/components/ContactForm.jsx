@@ -5,7 +5,7 @@ const ContactForm = () => {
   return (
     <div className="contact-container">
       <div className="contact-image">
-        <img src="/contactIMG.png" alt="Contact Us" className="contact-image" />
+        <img src="/contact_me.jpg" alt="Contact Us" className="contact-image" />
         <div className="overlay">
           <div className="text-content">
             {/* <h3>Contact Us</h3> */}

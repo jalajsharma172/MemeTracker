@@ -3,7 +3,7 @@ import './style.css';
 const faqData = [
   {
     question: "What is MemeTracker?",
-    answer: "MemeTracker is a platform that tracks and analyzes trending memes on Twitter (X) in real-time."
+    answer: "MemeTracker is a platform that tracks and analyzes trending memes on Reddit(X) in real-time."
   },
   {
     question: "How does MemeTracker work?",
@@ -15,7 +15,7 @@ const faqData = [
   },
   {
     question: "Can I search for specific memes?",
-    answer: "Absolutely! You can search by keywords, hashtags, or specific Twitter accounts to find memes relevant to your interests."
+    answer: "Absolutely! You can search by keywords, hashtags, or specific Reddit accounts to find memes relevant to your interests."
   },
   {
     question: "How often is meme data updated?",
@@ -27,7 +27,7 @@ const faqData = [
   },
   {
     question: "How can I submit a meme to be tracked?",
-    answer: "If you find an interesting meme, you can tag us on Twitter ."
+    answer: "If you find an interesting meme, you can tag us on Reddit ."
   },
   {
     question: "Does MemeTracker provide meme engagement statistics?",

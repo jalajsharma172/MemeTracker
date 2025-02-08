@@ -6,7 +6,7 @@ const MemeSubmit = () => {
       <h1 className="hero-heading">
       HELP US KEEP MEME CULTURE ALIVE! DROP YOUR MEME TO ADD HERE!
       </h1>
-      <button className="hero-button">APPLY TO GET HELP SUPPORT</button>
+      <button className="hero-button">APPLY TO ADD MEME</button>
     </div>
   );
 };
