@@ -11,6 +11,8 @@
     justify-content: center;
     align-items: center;
 }
+
+
 svg{
   width: 50px;
   height: 50px;
@@ -95,7 +97,14 @@ input{
     display: flex;
     align-items: center;
   }
-  
+  .navbar-left  img {
+   height: 35px;
+   width: 35px;
+   border-radius: 50%;
+   padding-right: 10px;
+    /* display: flex;
+    align-items: center; */
+  }
   .home{
     display: flex;
     align-items: center;
@@ -138,18 +147,25 @@ input{
   }
   
   .navbar-button {
-    /* text-decoration: none; */
     background-color: #ffdd57;
     color: #333;
     border: none;
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+    font-size: .9rem;
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    /* max-width: ; */
   }
-  
+  .navbar-button img{
+    width: 22px;
+    padding: 0;
+    margin: 0;
+    padding-right: 10px;
+    height: 22px;
+    border-radius: 15px;
+  }
   .navbar-button:hover {
     background-color: #ffcc00;
     transform: translateY(-2px);
@@ -158,3 +174,131 @@ input{
   .navbar-button:active {
     transform: translateY(0);
   }
+
+  /* FAQ Container Styling */
+.faq-container {
+  /* border: 2px solid red; */
+  background-color: #121212;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px;
+  font-family: Arial, sans-serif;
+}
+.section-container{
+  background-color: #000000;
+  padding: 10px;
+}
+
+.faq-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #fcfcfc;
+}
+
+/* FAQ Item Styling */
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0;
+}
+
+/* FAQ Question Styling */
+.faq-question {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #141313;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  border-left: 4px solid #161414;
+}
+
+.faq-question:hover {
+  background-color: #000000;
+}
+
+/* FAQ Answer Styling */
+.faq-answer {
+  padding: 10px;
+  font-size: 16px;
+  color: #fff6f6;
+  background-color: #141313;
+
+  margin-top: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth Transition */
+.faq-answer {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Question */
+/* Container Styling */
+/* .container {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+
+} */
+
+/* Tab Navigation */
+
+.table-button {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  color: gray;
+}
+
+.table-button.active {
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  border-bottom: 3px solid black;
+  
+}
+
+.table-button:hover {
+  
+  color: rgb(58, 55, 55);
+}
+
+.tab-container {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  color: gray;
+}
+
+.tab-button.active {
+  font-weight: bold;
+  color: black;
+  border-bottom: 3px solid black;
+}
+
+.tab-button:hover {
+  color: black;
+}
+
